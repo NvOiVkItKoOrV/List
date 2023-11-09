@@ -53,6 +53,7 @@ int main()
     insert2end(lst, 1);
     insert2end(lst, 1);
     insert2end(lst, 1);*/
+
     printf("<%d>",sizeof(*lst));
     list_dump(lst);
     list_dtor(lst);

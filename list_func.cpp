@@ -36,19 +36,31 @@ void list_dtor(list_t* lst)
 
 void list_dump(list_t* lst)
 {
-    printf("-------------------\n");
-    printf("list head - <%d>\n", lst[0].next);
-    printf("list tail - <%d>\n", lst[0].prev);
-    printf("list free - <%d>\n", lst[0].data);
-    printf("-------------------\n");
+    FILE* file_adress = fopen("Graph_dump.dot", "w");
 
-    for(int lst_counter = 0; lst_counter < LIST_SIZE; lst_counter++)
+    fprintf(file_adress,"digraph List {\n");
+    fprintf(file_adress,"   rankdir = TB;\n");
+    fprintf(file_adress,"   rankdir = LR;\n");
+    fprintf(file_adress,"\n");
+    fprintf(file_adress,"	 0 [shape = record, label = \" 0 | {| FREE lst[0].data | <1> TAIL lst[0].prev | <2> HEAD lst[0].next}\"];\n");
+
+    for(int lst_counter = 1; lst_counter < LIST_SIZE; lst_counter++)
     {
-        printf("%-7.d     ", lst_counter);
-        printf("\033[0;33m data value - %-7.d \033[0;37m", lst[lst_counter].data);
-        printf("\033[0;32m next value - %-7.d \033[0;37m", lst[lst_counter].next);
-        printf("\033[0;31m prev value - %-7.d\n \033[0;37m", lst[lst_counter].prev);
+        fprintf(file_adress, "	 %d [shape = record, label = \" %d | {| %d | <1> %d | <2> %d}\"];\n", lst_counter, lst_counter, lst[lst_counter].data, lst[lst_counter].next, lst[lst_counter].prev);
     }
+
+    for(int lst_counter = 1; lst_counter < LIST_SIZE; lst_counter++)
+    {
+        fprintf(file_adress, "%d: <1> -> %d: <1>[color=\"green\"];\n", lst_counter, lst[lst_counter].next);
+    }
+
+    for(int lst_counter = 1; lst_counter < LIST_SIZE; lst_counter++)
+    {
+        if(lst[lst_counter].prev != -1)
+        fprintf(file_adress, "%d: <2> -> %d: <2>[color=\"red\"];\n", lst_counter, lst[lst_counter].prev);
+    }
+    fprintf(file_adress,"}\n");
+    fclose(file_adress);
 }
 
 
