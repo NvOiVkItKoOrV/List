@@ -1,0 +1,26 @@
+digraph List {
+	rankdir = TB;
+	rankdir = LR;
+	
+	 0 [shape = record, label = " 0 | {| KLEO
+ | <1> 0 | <2> 0}"];
+	 1 [shape = record, label = " 1 | {| 10 | <1> 8 | <2> -1}"];
+	 2 [shape = record, label = " 2 | {| 20 | <1> 3 | <2> 0}"];
+	 3 [shape = record, label = " 3 | {| 30 | <1> 4 | <2> 2}"];
+	 4 [shape = record, label = " 4 | {| 40 | <1> 7 | <2> 3}"];
+	 5 [shape = record, label = " 5 | {| 50 | <1> 1 | <2> -1}"];
+	 6 [shape = record, label = " 6 | {| 60 | <1> 0 | <2> 7}"];
+	 7 [shape = record, label = " 7 | {| 45 | <1> 6 | <2> 4}"];
+	 8 [shape = record, label = " 8 | {| 0 | <1> 9 | <2> -1}"];
+	 9 [shape = record, label = " 9 | {| 0 | <1> 0 | <2> -1}"];
+	 information [shape = record, label = " 2 head | 6 tale | 5 free | 10 size "];
+	1: <1> -> 8: <1>[color="red"];
+	2: <1> -> 3: <1>;
+	3: <1> -> 4: <1>;
+	4: <1> -> 7: <1>;
+	5: <1> -> 1: <1>;
+	6: <1> -> 0: <1>;
+	7: <1> -> 6: <1>;
+	8: <1> -> 9: <1>;
+	9: <1> -> 0: <1>;
+}
